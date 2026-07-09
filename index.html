@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-1-2 (1) 피동 표현과 인용 표현</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-size: 1.1rem; }
+        h1 { font-size: 2.75rem !important; }
+        h2 { font-size: 2.2rem !important; }
+        h3 { font-size: 1.8rem !important; }
+        
+        .perspective { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .card-inner { transition: transform 0.6s; }
+        .card:hover .card-inner { transform: rotateY(180deg); }
+
+        #game-board {
+            position: relative;
+            overflow: hidden;
+            background-color: #0f172a;
+            height: 500px;
+            border-radius: 1rem;
+            border: 4px solid #334155;
+        }
+        .falling-item {
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            border-radius: 20px;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            font-size: 1.2rem;
+        }
+        .challenge-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+
+    <header class="bg-[#1e3a8a] text-white py-10 text-center shadow-xl">
+        <div class="text-2xl font-light mb-2 opacity-90">2-1-2 (1)</div>
+        <h1 class="font-extrabold tracking-tight">피동 표현과 인용 표현</h1>
+    </header>
+
+    <nav class="flex justify-center gap-6 my-10 px-4 flex-wrap">
+        <button onclick="showSection('concept')" id="btn-concept" class="nav-main-btn bg-blue-700 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:scale-105 transition">개념 정리</button>
+        <button onclick="showSection('vocab')" id="btn-vocab" class="nav-main-btn bg-white text-blue-700 border-2 border-blue-700 px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-50 transition">어휘 정리</button>
+        <button onclick="showSection('quiz')" id="btn-quiz" class="nav-main-btn bg-white text-blue-700 border-2 border-blue-700 px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-blue-50 transition">형성 평가</button>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+
+        <section id="concept" class="section-content">
+            <div class="bg-white p-10 rounded-3xl shadow-md mb-10 border border-slate-200">
+                <h2 class="font-black text-blue-900 mb-8 pb-4 border-b-4 border-blue-100">1. 피동 표현</h2>
+                
+                <h3 class="font-bold mb-6 text-slate-700 flex items-center"><i class="fa-regular fa-lightbulb text-yellow-500 mr-3"></i>피동과 능동의 뜻</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-blue-50 p-8 rounded-2xl border-2 border-blue-200">
+                        <div class="text-center font-black text-blue-800 text-2xl mb-2">능동 (能動)</div>
+                        <hr class="border-blue-200 mb-4">
+                        <p class="mb-4 font-medium leading-relaxed">주어가 제 힘으로 동작이나 행위를 하는 것. 행위의 주체 강조형.</p>
+                        <p class="text-slate-500 bg-white/50 p-3 rounded-lg text-lg italic">예) 사냥꾼이 사자를 잡았다.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-8 rounded-2xl border-2 border-indigo-200">
+                        <div class="text-center font-black text-indigo-800 text-2xl mb-2">피동 (被動)</div>
+                        <hr class="border-indigo-200 mb-4">
+                        <p class="mb-4 font-medium leading-relaxed">주어가 다른 대상에 의해 동작을 당하는 것. 행위의 대상 강조형.</p>
+                        <p class="text-slate-500 bg-white/50 p-3 rounded-lg text-lg italic">예) 사자가 사냥꾼에게 잡혔다.</p>
+                    </div>
+                </div>
+
+                <h3 class="font-bold mb-6 text-slate-700 flex items-center"><i class="fa-regular fa-lightbulb text-yellow-500 mr-3"></i>피동 표현 만드는 법</h3>
+                <div class="bg-slate-50 p-8 rounded-2xl space-y-4 mb-10 text-xl">
+                    <div class="flex items-start"><span class="text-blue-600 font-bold mr-3">●</span> <p>능동사 어간에 피동 접미사(-이-, -히-, -리-, -기-) 결합을 통한 형성.</p></div>
+                    <div class="flex items-start"><span class="text-blue-600 font-bold mr-3">●</span> <p>'-아/어지다', '-게 되다'와 같은 보조적 연결을 통한 형성.</p></div>
+                    <div class="flex items-start"><span class="text-blue-600 font-bold mr-3">●</span> <p>일부 명사에 접미사 '-되다'를 붙여 동작의 피동화 구현.</p></div>
+                </div>
+
+                <h3 class="font-bold mb-6 text-slate-700 flex items-center"><i class="fa-regular fa-lightbulb text-yellow-500 mr-3"></i>피동 표현의 효과</h3>
+                <div class="bg-slate-50 p-8 rounded-2xl space-y-4 text-xl">
+                    <div class="flex items-start"><span class="text-green-600 font-bold mr-3">✔</span> <p>직접적인 행위의 주체를 숨겨 책임을 회피하거나 완곡히 표현함.</p></div>
+                    <div class="flex items-start"><span class="text-green-600 font-bold mr-3">✔</span> <p>객관적인 사실이나 현상 전달 시 정보의 신뢰도를 높임.</p></div>
+                </div>
+            </div>
+
+            <div class="bg-white p-10 rounded-3xl shadow-md mb-10 border border-slate-200">
+                <h2 class="font-black text-blue-900 mb-8 pb-4 border-b-4 border-blue-100">2. 인용 표현</h2>
+                
+                <h3 class="font-bold mb-6 text-slate-700 flex items-center"><i class="fa-regular fa-lightbulb text-yellow-500 mr-3"></i>인용의 뜻과 종류</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div class="bg-emerald-50 p-8 rounded-2xl border-2 border-emerald-200">
+                        <div class="text-center font-black text-emerald-800 text-2xl mb-2">직접 인용</div>
+                        <hr class="border-emerald-200 mb-4">
+                        <p class="font-medium">원래의 형식과 내용을 그대로 유지하여 큰따옴표와 조사 '라고'를 사용함.</p>
+                        <p class="text-slate-500 mt-4 text-lg">예) "호랑이가 쫓아와요!"라고 말했다.</p>
+                    </div>
+                    <div class="bg-teal-50 p-8 rounded-2xl border-2 border-teal-200">
+                        <div class="text-center font-black text-teal-800 text-2xl mb-2">간접 인용</div>
+                        <hr class="border-teal-200 mb-4">
+                        <p class="font-medium">형식은 바꾸되 내용만 전달하며 큰따옴표 없이 조사 '고'를 사용함.</p>
+                        <p class="text-slate-500 mt-4 text-lg">예) 호랑이가 자기들을 쫓아온다고 말했다.</p>
+                    </div>
+                </div>
+
+                <h3 class="font-bold mb-6 text-slate-700 flex items-center"><i class="fa-regular fa-lightbulb text-yellow-500 mr-3"></i>인용 표현의 효과</h3>
+                <div class="bg-slate-50 p-8 rounded-2xl space-y-4 text-xl">
+                    <div class="flex items-start"><span class="text-teal-600 font-bold mr-3">▶</span> <p>직접 인용: 대화 당시의 현장감과 생동감을 생생하게 전달함.</p></div>
+                    <div class="flex items-start"><span class="text-teal-600 font-bold mr-3">▶</span> <p>간접 인용: 전체 문맥에 맞춰 매끄럽고 간결한 정보 전달이 가능함.</p></div>
+                </div>
+            </div>
+
+            <div class="bg-white p-10 rounded-3xl shadow-md border-t-8 border-orange-400">
+                <h2 class="font-black text-orange-900 mb-8 pb-4 border-b-4 border-orange-100">3. 피동과 인용 표현 활용 시 주의할 점</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xl leading-loose">
+                    <div class="p-6 bg-orange-50 rounded-2xl border border-orange-100">
+                        <p class="font-bold text-orange-800 mb-2">⚠️ 피동 표현 사용 시</p>
+                        <p>이중 피동 표현의 지양 및 명확한 주체 설정 노력 필요함.</p>
+                    </div>
+                    <div class="p-6 bg-orange-50 rounded-2xl border border-orange-100">
+                        <p class="font-bold text-orange-800 mb-2">⚠️ 인용 표현 사용 시</p>
+                        <p>사실과 의견의 엄격한 구분 및 정보 출처의 명확한 명시 요구됨.</p>
+                    </div>
+                    <div class="md:col-span-2 p-6 bg-red-50 rounded-2xl border border-red-100 text-red-900 font-bold">
+                        원작자의 본래 의도를 왜곡하지 않는 정직한 인용 태도 유지함.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vocab" class="section-content hidden">
+            <div class="flex justify-center gap-4 mb-10">
+                <button onclick="toggleVocabMode('card')" id="sub-btn-card" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-bold">플래시 카드 학습</button>
+                <button onclick="toggleVocabMode('game')" id="sub-btn-game" class="bg-white text-indigo-600 border border-indigo-600 px-6 py-3 rounded-lg font-bold">어휘 슈팅 게임</button>
+            </div>
+
+            <div id="vocab-card-area" class="bg-white p-10 rounded-3xl shadow-inner border">
+                <h3 class="font-black text-indigo-900 mb-6 text-center">어휘 플래시 카드</h3>
+                <div id="flashcard-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- JS 자동 생성 -->
+                </div>
+            </div>
+
+            <div id="vocab-game-area" class="hidden bg-slate-900 p-8 rounded-3xl shadow-2xl relative">
+                <div class="flex flex-wrap justify-between items-center mb-6 text-white gap-4">
+                    <div class="text-2xl font-bold">🎯 점수: <span id="game-score" class="text-yellow-400">0</span></div>
+                    <div class="text-2xl font-bold">⚡ 속도: <span id="game-speed" class="text-cyan-400">1.0</span>x</div>
+                    <div class="text-2xl font-bold">📈 정확도: <span id="game-accuracy" class="text-emerald-400">0</span>%</div>
+                </div>
+                
+                <div id="game-board">
+                    <div id="game-overlay" class="absolute inset-0 bg-slate-900/90 z-20 flex flex-col items-center justify-center text-center p-6">
+                        <h2 id="game-msg" class="text-4xl font-black text-white mb-6">어휘 방어 시스템</h2>
+                        <p class="text-slate-400 mb-8 text-xl">정확도가 높아질수록 적들이 빨라집니다.<br>90% 돌파 시 고난도 응용 문장이 출현합니다!</p>
+                        <button onclick="startGame()" class="bg-indigo-500 hover:bg-indigo-400 text-white text-2xl font-black px-12 py-5 rounded-full shadow-2xl transition-all">시스템 가동 (시작)</button>
+                    </div>
+                </div>
+                
+                <input type="text" id="game-input" class="w-full mt-8 bg-slate-800 border-4 border-slate-700 text-white text-3xl p-6 rounded-2xl focus:outline-none focus:border-indigo-500 text-center" placeholder="여기에 입력 후 엔터!" disabled>
+            </div>
+        </section>
+
+        <section id="quiz" class="section-content hidden">
+            <!-- 인적 사항 입력 -->
+            <div id="quiz-entry" class="bg-white p-12 rounded-3xl shadow-xl text-center border-t-8 border-blue-600">
+                <h2 class="font-black text-blue-900 mb-8">형성 평가 참가 정보</h2>
+                
+                <!-- 에러 메시지 표시 영역 (알림창 대체) -->
+                <p id="quiz-entry-msg" class="hidden text-orange-600 font-bold mb-6 text-xl bg-orange-50 py-3 rounded-lg"></p>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10 max-w-4xl mx-auto">
+                    <div class="text-left"><label class="block font-bold mb-2 text-slate-700">학년</label><input type="number" id="q-grade" class="w-full p-4 border-2 border-slate-200 rounded-xl text-xl focus:border-blue-500 outline-none"></div>
+                    <div class="text-left"><label class="block font-bold mb-2 text-slate-700">반</label><input type="number" id="q-class" class="w-full p-4 border-2 border-slate-200 rounded-xl text-xl focus:border-blue-500 outline-none"></div>
+                    <div class="text-left"><label class="block font-bold mb-2 text-slate-700">번호</label><input type="number" id="q-num" class="w-full p-4 border-2 border-slate-200 rounded-xl text-xl focus:border-blue-500 outline-none"></div>
+                    <div class="text-left"><label class="block font-bold mb-2 text-slate-700">이름</label><input type="text" id="q-name" class="w-full p-4 border-2 border-slate-200 rounded-xl text-xl focus:border-blue-500 outline-none"></div>
+                </div>
+                <button onclick="startQuizMode()" class="bg-blue-600 hover:bg-blue-500 text-white text-2xl font-black px-16 py-6 rounded-2xl shadow-xl transition-all">평가 시작하기</button>
+            </div>
+
+            <!-- 평가 문항 영역 -->
+            <div id="quiz-main" class="hidden space-y-8">
+                <div id="quiz-questions"></div>
+                
+                <!-- 제출 전 확인 메시지 영역 -->
+                <p id="quiz-submit-msg" class="hidden text-center text-orange-600 font-bold mt-8 text-xl bg-orange-50 py-3 rounded-lg max-w-2xl mx-auto"></p>
+
+                <div class="text-center py-10">
+                    <button onclick="submitQuizFinal()" class="bg-emerald-600 text-white text-2xl font-black px-16 py-6 rounded-2xl shadow-xl hover:bg-emerald-500 transition-all">최종 답안 제출 및 채점</button>
+                </div>
+            </div>
+
+            <!-- 결과 대시보드 -->
+            <div id="quiz-result" class="hidden bg-white p-10 rounded-3xl shadow-2xl border-4 border-blue-100 mt-10">
+                <h2 class="text-center font-black text-3xl mb-6">최종 성적 리포트</h2>
+                <div class="text-center text-5xl font-black text-blue-600 mb-8" id="display-score">0점</div>
+                <div id="quiz-feedback" class="space-y-6 text-xl"></div>
+                <p id="send-status" class="text-center mt-10 font-bold text-slate-400 italic"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // 외부 URL(fetch)을 사용하지 않으므로 SCRIPT_URL 변수는 제거되었습니다.
+
+        const vocabList = [
+            { w: "능동", d: "제 힘으로 움직이는 동사의 성질", e: "사냥꾼이 사자를 잡았다." },
+            { w: "피동", d: "남에게 동작을 당하는 동사의 성질", e: "사자가 사냥꾼에게 잡혔다." },
+            { w: "인용", d: "남의 말을 끌어다 쓰는 표현", e: "공자는 '배우라'고 하셨다." },
+            { w: "근본적", d: "본질이나 바탕을 이루는 것", e: "근본적인 원인을 찾자." },
+            { w: "부각", d: "특징을 두드러지게 나타냄", e: "이미지를 부각하다." },
+            { w: "빈도", d: "일이 반복되는 횟수", e: "발생 빈도가 높다." },
+            { w: "생동감", d: "살아 움직이는 듯한 느낌", e: "생동감이 넘치는 시장." },
+            { w: "왜곡", d: "사실과 다르게 해석함", e: "진실을 왜곡하지 마라." },
+            { w: "전가", d: "책임을 남에게 넘겨씌움", e: "책임을 전가하다." },
+            { w: "상황", d: "일이 되어가는 과정이나 형편", e: "상황이 매우 급박하다." },
+            { w: "초점", d: "관심이 집중되는 중심 부분", e: "토론의 초점을 맞추다." },
+            { w: "표현", d: "생각을 형상으로 드러냄", e: "감정을 표현하다." },
+            { w: "원활", d: "모난 데 없고 매끄러움", e: "소통이 원활하다." },
+            { w: "담화", d: "서로 이야기를 주고받음", e: "담화 문화를 형성하다." },
+            { w: "의도", d: "무엇을 하고자 하는 생각", e: "순수한 의도였다." },
+            { w: "복구", d: "이전 상태로 회복함", e: "건물을 복구하다." },
+            { w: "강조", d: "특별히 강하게 주장함", e: "중요성을 강조하다." },
+            { w: "객관적", d: "제삼자의 입장에서 보는 것", e: "객관적인 지표." },
+            { w: "주관적", d: "자기만의 견해를 바탕함", e: "주관적인 판단." },
+            { w: "주체", d: "동작의 주가 되는 말", e: "행위의 주체." },
+            { w: "대상", d: "목표가 되는 상대", e: "공격 대상이 되다." },
+            { w: "격식", d: "상황에 맞는 예의나 방식", e: "격식을 차리다." },
+            { w: "간결", d: "간단하고 짜임새 있음", e: "문장이 간결하다." },
+            { w: "산만", d: "어수선하여 집중이 안 됨", e: "분위기가 산만하다." },
+            { w: "동사", d: "동작이나 작용을 나타냄", e: "먹다, 가다 등." },
+            { w: "주어", d: "동작의 주체가 되는 성분", e: "철수가 학교에 간다." },
+            { w: "목적어", d: "동작의 대상이 되는 성분", e: "밥을 먹는다." },
+            { w: "부사어", d: "용언의 내용을 한정함", e: "매우 예쁘다." },
+            { w: "서술어", d: "움직임을 서술하는 말", e: "예쁘다, 공부한다." },
+            { w: "접미사", d: "단어 뒤에 붙는 말", e: "접미사 '-님'." }
+        ];
+
+        const challengeSentences = [
+            { s: "도둑이 경찰에게 (  ).", a: "잡혔다" },
+            { s: "민수는 학교에 (  )고 말했다.", a: "간다고" },
+            { s: "철수가 영희를 (  ).", a: "안았다" },
+            { s: "그 소식이 뉴스에서 (  ).", a: "보도되었다" }
+        ];
+
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-main-btn').forEach(b => {
+                b.classList.replace('bg-blue-700', 'bg-white');
+                b.classList.replace('text-white', 'text-blue-700');
+            });
+            const active = document.getElementById('btn-'+id);
+            active.classList.replace('bg-white', 'bg-blue-700');
+            active.classList.replace('text-blue-700', 'text-white');
+        }
+
+        const cardGrid = document.getElementById('flashcard-grid');
+        vocabList.forEach(item => {
+            cardGrid.innerHTML += `
+                <div class="card perspective h-40 cursor-pointer">
+                    <div class="card-inner w-full h-full relative preserve-3d">
+                        <div class="absolute w-full h-full bg-indigo-50 border-2 border-indigo-200 rounded-2xl flex flex-col items-center justify-center backface-hidden shadow-sm">
+                            <span class="text-3xl font-black text-indigo-900">${item.w}</span>
+                            <span class="text-sm text-indigo-400 mt-2">마우스를 올려보세요</span>
+                        </div>
+                        <div class="absolute w-full h-full bg-indigo-600 rounded-2xl flex flex-col items-center justify-center backface-hidden rotate-y-180 p-6 text-white text-center shadow-md">
+                            <p class="text-xl font-bold mb-2 break-keep">${item.d}</p>
+                            <hr class="w-full border-indigo-400 my-2">
+                            <p class="text-base opacity-90 italic break-keep">"${item.e}"</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        let gameMode = 'card';
+        function toggleVocabMode(m) {
+            gameMode = m;
+            document.getElementById('vocab-card-area').classList.toggle('hidden', m === 'game');
+            document.getElementById('vocab-game-area').classList.toggle('hidden', m === 'card');
+            document.getElementById('sub-btn-card').className = m === 'card' ? 'bg-indigo-600 text-white px-6 py-3 rounded-lg font-bold' : 'bg-white text-indigo-600 border border-indigo-600 px-6 py-3 rounded-lg font-bold';
+            document.getElementById('sub-btn-game').className = m === 'game' ? 'bg-indigo-600 text-white px-6 py-3 rounded-lg font-bold' : 'bg-white text-indigo-600 border border-indigo-600 px-6 py-3 rounded-lg font-bold';
+        }
+
+        let score = 0, speed = 1.0, spawned = 0, matched = 0, items = [], isRunning = false, gAni;
+        const board = document.getElementById('game-board'), gInput = document.getElementById('game-input');
+
+        function startGame() {
+            document.getElementById('game-overlay').classList.add('hidden');
+            gInput.disabled = false; gInput.focus();
+            score = 0; speed = 1.0; spawned = 0; matched = 0; isRunning = true; items = [];
+            spawnLoop();
+            updateGame();
+        }
+
+        function spawnLoop() {
+            if(!isRunning) return;
+            spawnItem();
+            setTimeout(spawnLoop, 2000 / speed);
+        }
+
+        function spawnItem() {
+            const acc = spawned === 0 ? 0 : (matched / spawned) * 100;
+            let data;
+            let isChallenge = acc >= 90 && spawned > 5;
+
+            if(isChallenge) {
+                const s = challengeSentences[Math.floor(Math.random() * challengeSentences.length)];
+                data = { text: s.s, answer: s.a };
+            } else {
+                const v = vocabList[Math.floor(Math.random() * vocabList.length)];
+                data = { text: v.w, answer: v.w };
+            }
+
+            const el = document.createElement('div');
+            el.className = 'falling-item' + (isChallenge ? ' challenge-box' : '');
+            el.innerText = data.text;
+            const x = Math.random() * (board.clientWidth - 150);
+            el.style.left = x + 'px';
+            el.style.top = '-50px';
+            board.appendChild(el);
+            items.push({ el, ans: data.answer, y: -50, spd: speed + Math.random() });
+            spawned++;
+        }
+
+        function updateGame() {
+            if(!isRunning) return;
+            for(let i=items.length-1; i>=0; i--) {
+                items[i].y += items[i].spd;
+                items[i].el.style.top = items[i].y + 'px';
+                if(items[i].y > board.clientHeight) {
+                    endGame(); return;
+                }
+            }
+            gAni = requestAnimationFrame(updateGame);
+        }
+
+        function endGame() {
+            isRunning = false;
+            cancelAnimationFrame(gAni);
+            gInput.disabled = true;
+            document.getElementById('game-overlay').classList.remove('hidden');
+            document.getElementById('game-msg').innerText = "통신 두절! (최종 점수: " + score + ")";
+            items.forEach(it => it.el.remove());
+        }
+
+        gInput.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter') {
+                const val = gInput.value.trim();
+                const idx = items.findIndex(it => it.ans === val);
+                if(idx > -1) {
+                    items[idx].el.remove();
+                    items.splice(idx, 1);
+                    matched++; score += 10;
+                    const acc = (matched / spawned) * 100;
+                    speed = 1.0 + (acc / 100);
+                    document.getElementById('game-score').innerText = score;
+                    document.getElementById('game-speed').innerText = speed.toFixed(1);
+                    document.getElementById('game-accuracy').innerText = Math.round(acc);
+                }
+                gInput.value = '';
+            }
+        });
+
+        const quizList = [
+            { type: 'ox', q: "피동 표현은 주어가 동작이나 행위를 당하는 것이다.", a: "O", exp: "피동의 정의입니다. 주어가 스스로 하는 것은 능동입니다." },
+            { type: 'ox', q: "직접 인용은 큰따옴표 없이 조사 '고'를 사용한다.", a: "X", exp: "큰따옴표(\"\")와 조사 '라고'를 함께 사용해야 직접 인용입니다." },
+            { type: 'short', q: "능동문 '사냥꾼이 사자를 잡았다'를 피동문으로 바꾸면 '사자가 사냥꾼에게 (      )'이다.", a: "잡혔다", exp: "능동사 '잡다'에 피동 접미사 '-히-'가 결합되어 '잡히었다 -> 잡혔다'가 됩니다." },
+            { type: 'short', q: "간접 인용절 뒤에 붙는 조사는 무엇인가?", a: "고", exp: "간접 인용은 인용부호 없이 조사 '고'를 씁니다. (예: 밥을 먹었다고 말했다.)" },
+            { type: 'mcq', q: "피동 접미사가 아닌 것은?", opts: ["-이-", "-히-", "-리-", "-기-", "-우-"], a: "5", exp: "-우-는 사동 접미사(남에게 시킴)입니다. 피동 접미사는 이, 히, 리, 기 입니다." },
+            { type: 'mcq', q: "다음 중 피동 표현이 쓰이지 않은 문장은?", opts: ["그가 도둑을 잡았다.", "범인이 경찰에게 잡혔다.", "뉴스가 방송에서 보도되었다.", "이 상처는 영원히 잊히지 않는다.", "그의 마음이 내게 읽힌다."], a: "1", exp: "1번은 주어가 자기 힘으로 동작을 하는 주동(능동) 표현입니다. 나머지는 모두 피동 표현입니다." },
+            { type: 'mcq', q: "다음 중 직접 인용문인 것은?", opts: ["비가 온다고 한다.", "영희는 자기가 가겠다고 말했다.", "철수는 \"나도 갈래.\"라고 말했다.", "선생님께서 공부하라고 하셨다.", "친구와 내일 보자고 약속했다."], a: "3", exp: "큰따옴표와 조사 '라고'가 그대로 쓰인 3번이 직접 인용입니다." },
+            { type: 'mcq', q: "피동 표현의 효과가 아닌 것은?", opts: ["주체를 숨겨 책임 회피", "사실 전달 시 객관성 부여", "행위의 주체(주어)를 강하게 강조", "행위를 당하는 대상 부각", "주체를 모를 때 자연스러운 표현 가능"], a: "3", exp: "행위의 주체를 강조하는 것은 능동 표현의 주된 효과입니다." },
+            { type: 'mcq', q: "'복구하다'의 올바른 피동 표현은?", opts: ["복구되어지다", "복구시키다", "복구되다", "복구하다", "복구해지다"], a: "3", exp: "일부 명사 뒤에 접미사 '-되다'를 붙여 피동을 만듭니다. '복구되어지다'는 이중 피동입니다." },
+            { type: 'mcq', q: "직접 인용을 간접 인용으로 바꿀 때 고려하지 않아도 되는 것은?", opts: ["큰따옴표 제거", "조사 '라고'를 '고'로 변경", "상황에 맞게 대명사(나, 자기 등) 변경", "인용하는 말의 본래 의미를 내 생각대로 수정", "시간 표현(내일, 오늘 등) 변경"], a: "4", exp: "형식은 바꾸더라도 원작자의 의도나 말의 내용은 절대 왜곡하거나 임의로 수정하면 안 됩니다." },
+            { type: 'mcq', q: "다음 중 능동문인 것은?", opts: ["아이가 엄마에게 안겼다.", "철수가 밥을 맛있게 먹었다.", "거센 바람에 창문이 깨졌다.", "사람들의 발에 꽃이 밟혔다.", "이 책은 요즘 학생들에게 많이 읽히다."], a: "2", exp: "철수(주어)가 제 힘으로 밥을 먹는 행위를 하므로 능동문입니다." },
+            { type: 'mcq', q: "간접 인용이 주는 효과로 가장 적절한 것은?", opts: ["상황을 있는 그대로 생생하게 보여줌", "현장감을 극대화함", "문맥에 맞게 다듬어져 매끄럽고 간결하게 전달함", "말하는 사람의 억양과 말투를 보존함", "작가의 주관적 감정을 강하게 전달함"], a: "3", exp: "간접 인용은 형식적인 요소들을 정리하여 전체 문장에 맞게 매끄럽고 간결한 느낌을 줍니다." },
+            { type: 'mcq', q: "다음 중 이중 피동이 사용된 단어는?", opts: ["잡히다", "보이다", "열려지다", "끊기다", "나뉘다"], a: "3", exp: "'열다'에 피동 접미사 '-리-'와 피동 보조 용언 '-어지다'가 결합되어(열+리+어지다=열려지다) 중복되었습니다. (올바른 표현: 열리다)" },
+            { type: 'mcq', q: "사실이나 정보를 객관적으로 전달할 때 주로 활용하면 좋은 표현은?", opts: ["사동 표현", "능동 표현", "피동 표현", "직접 인용 표현", "감탄 표현"], a: "3", exp: "피동 표현은 행위자보다 현상 자체에 초점을 맞추므로 객관적이고 중립적인 느낌을 부여하기 좋습니다." },
+            { type: 'mcq', q: "인용 표현을 사용할 때 주의할 점으로 올바르지 않은 것은?", opts: ["다른 사람의 의견을 쓸 때는 출처를 밝힌다.", "원작자의 본래 의도를 왜곡하지 않는다.", "사실과 의견을 명확하게 구분한다.", "인용할 때는 무조건 내용을 짧게 줄여야 한다.", "원작을 비판적으로 수용하는 태도를 가진다."], a: "4", exp: "인용 시 원문을 짧게 줄이는 것이 항상 필수적인 규칙은 아니며, 맥락에 맞게 적절히 인용하는 것이 중요합니다." }
+        ];
+
+        function startQuizMode() {
+            const n = document.getElementById('q-name').value;
+            const msgEl = document.getElementById('quiz-entry-msg');
+            
+            if(!n || !document.getElementById('q-grade').value || !document.getElementById('q-class').value || !document.getElementById('q-num').value) {
+                msgEl.innerText = "⚠️ 인적 사항(학년, 반, 번호, 이름)을 모두 입력해주세요.";
+                msgEl.classList.remove('hidden');
+                return;
+            }
+            msgEl.classList.add('hidden');
+
+            document.getElementById('quiz-entry').classList.add('hidden');
+            document.getElementById('quiz-main').classList.remove('hidden');
+            
+            let html = "";
+            quizList.forEach((it, i) => {
+                html += `<div class="bg-white p-8 rounded-2xl shadow border-l-8 border-blue-400" id="q-container-${i}">
+                    <p class="font-bold text-2xl mb-4">${i+1}. ${it.q}</p>`;
+                
+                if(it.type === 'ox') {
+                    html += `<div class="flex justify-center gap-12 mt-6">
+                        <label class="text-4xl font-black cursor-pointer bg-slate-50 px-10 py-4 rounded-2xl hover:bg-blue-100 transition-colors border border-slate-200">
+                            <input type="radio" name="q${i}" value="O" class="hidden"> O 
+                        </label>
+                        <label class="text-4xl font-black cursor-pointer bg-slate-50 px-10 py-4 rounded-2xl hover:bg-red-100 transition-colors border border-slate-200">
+                            <input type="radio" name="q${i}" value="X" class="hidden"> X 
+                        </label>
+                    </div>`;
+                } else if(it.type === 'short') {
+                    html += `<input type="text" name="q${i}" class="w-full mt-4 p-4 border-2 border-slate-200 rounded-xl text-xl focus:border-blue-500 outline-none" placeholder="여기에 정답을 입력하세요">`;
+                } else {
+                    it.opts.forEach((o, oi) => {
+                        html += `<label class="block p-4 mt-2 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-blue-50 transition-colors text-lg">
+                            <input type="radio" name="q${i}" value="${oi+1}" class="mr-3 transform scale-125 accent-blue-600"> ${oi+1}) ${o}
+                        </label>`;
+                    });
+                }
+                
+                html += `
+                    <div class="mt-6 flex justify-end">
+                        <button id="btn-check-${i}" onclick="checkAnswer(${i})" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-md transition-all text-lg">정답 확인</button>
+                    </div>
+                    <div id="fb-${i}" class="hidden mt-4 p-5 rounded-xl text-lg transition-all duration-300"></div>
+                </div>`;
+            });
+            document.getElementById('quiz-questions').innerHTML = html;
+        }
+
+        function checkAnswer(i) {
+            const it = quizList[i];
+            let user = "";
+            const fbDiv = document.getElementById(`fb-${i}`);
+            
+            if(it.type === 'short') {
+                user = document.querySelector(`input[name="q${i}"]`).value.trim();
+            } else {
+                const sel = document.querySelector(`input[name="q${i}"]:checked`);
+                if(sel) user = sel.value;
+            }
+
+            if(!user) {
+                fbDiv.classList.remove('hidden');
+                fbDiv.className = "mt-4 p-4 rounded-xl text-lg bg-orange-50 border border-orange-200 text-orange-700 font-bold";
+                fbDiv.innerText = "⚠️ 답안을 먼저 선택하거나 입력해주세요.";
+                return;
+            }
+
+            const isCorrect = (user === it.a);
+            fbDiv.classList.remove('hidden');
+
+            if(isCorrect) {
+                fbDiv.className = "mt-4 p-5 rounded-xl text-lg bg-blue-50 border border-blue-200 text-slate-800";
+                fbDiv.innerHTML = `<span class="font-black text-blue-600 text-2xl"><i class="fa-solid fa-circle-check"></i> 정답입니다!</span><br><span class="mt-3 block leading-relaxed">💡 <span class="font-bold">해설:</span> ${it.exp}</span>`;
+            } else {
+                fbDiv.className = "mt-4 p-5 rounded-xl text-lg bg-red-50 border border-red-200 text-slate-800";
+                fbDiv.innerHTML = `<span class="font-black text-red-600 text-2xl"><i class="fa-solid fa-circle-xmark"></i> 틀렸습니다.</span> <span class="font-bold ml-2 text-red-800">(정답: ${it.a})</span><br><span class="mt-3 block leading-relaxed">💡 <span class="font-bold">해설:</span> ${it.exp}</span>`;
+            }
+
+            const inputs = document.querySelectorAll(`input[name="q${i}"]`);
+            inputs.forEach(inp => inp.disabled = true);
+            
+            if (it.type !== 'short') {
+                document.querySelectorAll(`input[name="q${i}"]`).forEach(inp => {
+                     inp.parentElement.classList.add('opacity-70', 'cursor-not-allowed');
+                     inp.parentElement.classList.remove('hover:bg-blue-50', 'hover:bg-red-100');
+                });
+            }
+
+            document.getElementById(`btn-check-${i}`).style.display = 'none';
+            document.getElementById(`q-container-${i}`).classList.replace('border-blue-400', 'border-slate-300');
+        }
+
+        let submitAttempted = false;
+
+        function submitQuizFinal() {
+            let score = 0, answers = {}, results = {}, feedback = "";
+            let allAnswered = true;
+            
+            quizList.forEach((it, i) => {
+                let user = "";
+                if(it.type === 'short') user = document.querySelector(`input[name="q${i}"]`).value.trim();
+                else {
+                    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+                    if(sel) user = sel.value;
+                }
+                
+                if(!user) {
+                    allAnswered = false;
+                }
+                
+                const isCorrect = (user === it.a);
+                if(isCorrect) score += (100/15);
+                answers["q"+(i+1)] = user || "미응답";
+                results["q"+(i+1)] = isCorrect ? "O" : "X";
+                
+                feedback += `<div class="p-4 rounded-lg ${isCorrect ? 'bg-blue-50 border border-blue-200' : 'bg-red-50 border border-red-200'}">
+                    <strong>Q${i+1}. ${isCorrect ? '<span class="text-blue-600">⭕ 정답</span>' : '<span class="text-red-600">❌ 오답</span>'}</strong> 
+                    (내 답: <span class="font-bold">${user || '미응답'}</span>, 정답: <span class="font-bold text-slate-700">${it.a}</span>)
+                    <p class="text-slate-600 text-base mt-2">💡 해설: ${it.exp}</p>
+                </div>`;
+            });
+
+            const submitMsgEl = document.getElementById('quiz-submit-msg');
+            if(!allAnswered && !submitAttempted) {
+                submitMsgEl.innerText = "⚠️ 아직 풀지 않거나 정답 확인을 누르지 않은 문제가 있습니다. 빈칸은 오답 처리됩니다. 그래도 제출하시려면 버튼을 한 번 더 눌러주세요.";
+                submitMsgEl.classList.remove('hidden');
+                submitAttempted = true;
+                return;
+            }
+
+            const finalScore = Math.round(score);
+            document.getElementById('quiz-main').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('display-score').innerText = finalScore + "점";
+            document.getElementById('quiz-feedback').innerHTML = feedback;
+
+            // 데이터 전송 페이로드 구성
+            const payload = {
+                grade: document.getElementById('q-grade').value,
+                classNum: document.getElementById('q-class').value,
+                studentNum: document.getElementById('q-num').value,
+                name: document.getElementById('q-name').value,
+                totalScore: finalScore,
+                answers: answers,
+                results: results
+            };
+
+            const statusEl = document.getElementById('send-status');
+            statusEl.innerText = "성적 데이터를 시트로 전송 중입니다...";
+            statusEl.className = "text-center mt-10 font-bold text-slate-500 text-xl";
+
+            // google.script.run을 이용한 내부 프로토콜 전송 로직
+            if (typeof google !== 'undefined' && google.script) {
+                google.script.run
+                    .withSuccessHandler(function(response) {
+                        if(response.success) {
+                            statusEl.innerText = "✅ 성적이 성공적으로 전송되었습니다.";
+                            statusEl.className = "text-center mt-10 font-bold text-blue-600 text-xl";
+                        } else {
+                            statusEl.innerText = "⚠️ 전송 실패: " + response.error;
+                            statusEl.className = "text-center mt-10 font-bold text-red-600 text-xl";
+                        }
+                    })
+                    .withFailureHandler(function(error) {
+                        statusEl.innerText = "⚠️ 서버 통신 오류가 발생했습니다.";
+                        statusEl.className = "text-center mt-10 font-bold text-red-600 text-xl";
+                    })
+                    .saveQuizResult(payload); // Apps Script의 함수 직접 호출
+            } else {
+                statusEl.innerText = "⚠️ 앱스 스크립트 환경이 아닙니다. (데이터 저장 불가)";
+                statusEl.className = "text-center mt-10 font-bold text-orange-600 text-xl";
+            }
+        }
+
+        showSection('concept');
+    </script>
+</body>
+</html>
